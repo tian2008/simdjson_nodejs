@@ -45,7 +45,7 @@ describe(`simdjson`, function () {
     it(`throws error for invalid json str`, function () {
       assert.throws(
         () => simdjson.parse(jsonExamples.demo + `#$`),
-        new Error(`The JSON document has an improper structure: missing or superfluous commas, braces, missing keys, etc.`)
+        new Error(`TAPE_ERROR: The JSON document has an improper structure: missing or superfluous commas, braces, missing keys, etc.`)
       );
     });
   });
@@ -63,7 +63,7 @@ describe(`simdjson`, function () {
       const jsonTape = simdjson.lazyParse(jsonExamples.canada);
       assert.throws(
         () => jsonTape.valueForKeyPath(`foo.bar.yolo`),
-        new Error(`The JSON field referenced does not exist in this object.`)
+        new Error(`NO_SUCH_FIELD: The JSON field referenced does not exist in this object.`)
       );
     });
 
